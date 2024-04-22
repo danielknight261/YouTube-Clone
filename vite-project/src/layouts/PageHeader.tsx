@@ -1,4 +1,4 @@
-import { Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
+import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
 import logo from "../assets/Logo.png";
 import { Button } from "../components/Button";
 import { useState } from "react";
@@ -21,7 +21,16 @@ export default function PageHeader() {
       </div>
 
       {/* //Center Nav */}
-      <form className="md:flex hidden gap-4 flex-grow justify-center">
+      <form className={`gap-4 flex-grow justify-center ${showFullWidthSearch ? "flex" : "hidden md:flex" }`}>
+        
+      <Button 
+      onClick={() => setShowFullWidthSearch(false)}
+      type="button" 
+      size="icon" 
+      variant="ghost"  
+      className="flex-shrink-0">
+          <ArrowLeft/>
+        </Button>
         <div className="flex flex-grow max-w-[600px]">
           <input type="search" placeholder="Search"
           className="rounded-l-full border border-secondary-border shadow-inn shadow-secondary py-1 px-4 text-lg w-full focus:border-blue-500 outline-none" />
@@ -35,8 +44,9 @@ export default function PageHeader() {
       </form>
 
       {/* Right Nav */}
-      <div className={`flex flex-shrink-0 md:gap-2 ${showFullWidthSearch ? "hidden" : "flex"}`}>
-      <Button onClick={() => setShowFullWidthSearch(!showFullWidthSearch)} size="icon" variant="ghost" className="md:hidden">
+      <div className={`flex-shrink-0 md:gap-2 ${showFullWidthSearch ? "hidden" : "flex"}`}>
+      <Button onClick={() => setShowFullWidthSearch(true)} size="icon" variant="ghost" 
+      className="md:hidden">
           <Search/>
         </Button>
         <Button size="icon" variant="ghost" className="md:hidden">

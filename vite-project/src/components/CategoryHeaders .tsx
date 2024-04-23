@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./Button";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type CategoryHeadersProps = {
   categories: string[];
@@ -70,6 +70,7 @@ export function CategoryHeaders({
             onClick={() => {
                 if (containerRef.current == null) return
                 const newTranslate = translate - TRANSLATE_AMOUNT
+                const edge = containerRef.current.scrollWidth
                 if (newTranslate <= 0) return 0
                 return newTranslate
             }}

@@ -20,10 +20,10 @@ export default function App() {
               onSelect={setSelectedCategory}
             />
           </div>
-          <div className="grid gap-4 grid-cols-[repeat(auto-fill, minmax(300px,1fr))]">
-            {videos.map(video => (
-            <GridItems  key={video.id} {...video}/>
-          ))}
+          <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+              {videos.map(video => (
+                <GridItems  key={video.id} {...video} />
+              ))}
           </div>
         </div>
       </div>

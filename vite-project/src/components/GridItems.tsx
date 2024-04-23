@@ -10,7 +10,7 @@ type GridItemsProps = {
     profileUrl: string;
   };
   views: number;
-  postedAt: Date;
+  // postedAt: Date;
   duration: number;
   thumbnailUrl: string;
   videoUrl: string;
@@ -25,7 +25,7 @@ export function GridItems({
   title,
   channel,
   views,
-  postedAt,
+  // postedAt,
   duration,
   thumbnailUrl,
   videoUrl,
@@ -53,14 +53,15 @@ export function GridItems({
       <a href={`/watch?v=${id}`} className="relative aspect-video">
         <img
           src={thumbnailUrl}
-          className="block w-full h-full object-cover rounded-xl"
+        className={`block w-full h-full object-cover transition-[border-radius] duration-200 
+        ${isVideoPlaying ? "rounded-none" : "rounded-xl" }`}
         />
         <div className="absolute bottom-1 right-1 bg-secondary-dark text-secondary text-sm px-0.5 rounded">
           {formatDuration(duration)}
         </div>
         <video
           className={`block h-full object-cover absolute inset-0 transition-opacity duration-200 ${
-            isVideoPlaying ? "opacity-100" : "opacity-0"
+            isVideoPlaying ? "opacity-100 delay-200" : "opacity-0"
           }`}
           ref={videoRef}
           muted

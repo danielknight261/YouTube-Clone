@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import { CategoryHeaders } from "./components/CategoryHeaders ";
-import { categories } from "./data/home";
+import { categories, videos } from "./data/home";
 import PageHeader from "./layouts/PageHeader";
+import { GridItems } from "./components/GridItems";
 
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
@@ -18,6 +19,11 @@ export default function App() {
               selectedCategory={selectedCategory}
               onSelect={setSelectedCategory}
             />
+          </div>
+          <div className="grid gap-4 grid-cols-[repeat(auto-fill, minmax(300px,1fr))]">
+            {videos.map(video => (
+            <GridItems  key={video.id} {...video}/>
+          ))}
           </div>
         </div>
       </div>
